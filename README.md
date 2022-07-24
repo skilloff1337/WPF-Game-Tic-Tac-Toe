@@ -1,6 +1,6 @@
 # WPF-Game-Tic-Tac-Toe
 
-Tic-tac-toe game based on VPF. With two modes (3x3 and 15x15) for two players, with statistics.
+Tic-tac-toe game based on WPF. With two modes (3x3 and 15x15) for two players, with statistics.
 
 <details>
   <summary>Main menu:</summary>  
