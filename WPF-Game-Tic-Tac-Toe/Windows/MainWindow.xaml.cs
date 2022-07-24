@@ -30,6 +30,11 @@ namespace WPF_Game_Tic_Tac_Toe
             var newWindow = new DialogNicknamesWindow(this,_firstNick,_secondNick);
             newWindow.ShowDialog();
         }
+        private void Button_ShowDescription(object sender, RoutedEventArgs e)
+        {
+            var newWindow = new DescriptionWindow();
+            newWindow.ShowDialog();
+        }
 
 
         public void UpdateNickNames(string firstNick, string secondNick)

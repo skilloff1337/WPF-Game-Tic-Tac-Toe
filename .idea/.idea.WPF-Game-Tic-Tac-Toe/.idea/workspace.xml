@@ -7,14 +7,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="883f515e-6d12-4e47-a8d5-55a68bfa5b3b" name="Changes" comment="Init commit;">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.WPF-Game-Tic-Tac-Toe/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.WPF-Game-Tic-Tac-Toe/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.WPF-Game-Tic-Tac-Toe/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.WPF-Game-Tic-Tac-Toe/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF-Game-Tic-Tac-Toe/App.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/WPF-Game-Tic-Tac-Toe/App.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF-Game-Tic-Tac-Toe/MainWindow.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/WPF-Game-Tic-Tac-Toe/Windows/MainWindow.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF-Game-Tic-Tac-Toe/MainWindow.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WPF-Game-Tic-Tac-Toe/Windows/MainWindow.xaml.cs" afterDir="false" />
+    <list default="true" id="883f515e-6d12-4e47-a8d5-55a68bfa5b3b" name="Changes" comment="added nickname change;">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.WPF-Game-Tic-Tac-Toe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WPF-Game-Tic-Tac-Toe/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF-Game-Tic-Tac-Toe/Windows/DescriptionWindow.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/WPF-Game-Tic-Tac-Toe/Windows/DescriptionWindow.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF-Game-Tic-Tac-Toe/Windows/DescriptionWindow.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WPF-Game-Tic-Tac-Toe/Windows/DescriptionWindow.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF-Game-Tic-Tac-Toe/Windows/MainWindow.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/WPF-Game-Tic-Tac-Toe/Windows/MainWindow.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF-Game-Tic-Tac-Toe/Windows/MainWindow.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WPF-Game-Tic-Tac-Toe/Windows/MainWindow.xaml.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +29,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2CNvO8Laf25ZQ72IlEoHjNNG29b" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -74,7 +75,7 @@
       <option name="presentableId" value="Default" />
       <updated>1658655824427</updated>
       <workItem from="1658655831189" duration="50000" />
-      <workItem from="1658655954087" duration="1409000" />
+      <workItem from="1658655954087" duration="2951000" />
     </task>
     <task id="LOCAL-00001" summary="Init commit;">
       <created>1658655970454</created>
@@ -83,7 +84,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658655970454</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="added nickname change;">
+      <created>1658668024411</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1658668024411</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -106,6 +114,7 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Init commit;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Init commit;" />
+    <MESSAGE value="added nickname change;" />
+    <option name="LAST_COMMIT_MESSAGE" value="added nickname change;" />
   </component>
 </project>
