@@ -7,7 +7,7 @@ public partial class DialogNicknamesWindow : Window
     private readonly MainWindow _mainWindow;
     private readonly string _firstPlayerNick;
     private readonly string _secondPlayerNick;
-    
+
     public DialogNicknamesWindow(MainWindow mainWindow, string firstName, string secondNick)
     {
         _mainWindow = mainWindow;

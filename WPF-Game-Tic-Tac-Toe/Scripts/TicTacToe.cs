@@ -77,9 +77,9 @@ public class TicTacToe
         if (_stringBuilder.Length > 0)
             _stringBuilder.Clear();
 
-        for (var index = 0; index < _maxIndex; index++)
+        for (var i = 0; i < _maxIndex; i++)
         {
-            var button = _buttons[index, index];
+            var button = _buttons[i, i];
             if (button.Content == null)
             {
                 _stringBuilder.Append('!');
@@ -97,9 +97,9 @@ public class TicTacToe
         if (_stringBuilder.Length > 0)
             _stringBuilder.Clear();
 
-        for (int firstIndex = 0, secondIndex = _maxIndex - 1; secondIndex >= 0; secondIndex--, firstIndex++)
+        for (int i = 0, k = _maxIndex - 1; k >= 0; k--, i++)
         {
-            var button = _buttons[firstIndex, secondIndex];
+            var button = _buttons[i, k];
             if (button.Content == null)
             {
                 _stringBuilder.Append('!');

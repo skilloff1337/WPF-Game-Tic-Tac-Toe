@@ -10,7 +10,7 @@ public partial class TicTakToeClassic : Window
 {
     private readonly Game _gameInfo = new();
     private readonly Button[,] _buttons = new Button[3, 3];
-    
+
     private static readonly Regex _regexX = new(@"[X]{3}", RegexOptions.Compiled);
     private static readonly Regex _regex0 = new(@"[0]{3}", RegexOptions.Compiled);
 
@@ -45,10 +45,10 @@ public partial class TicTakToeClassic : Window
         var currentMove = _gameInfo.GameTurnNumber % 2 == 0 ? SYMBOL_O : SYMBOL_X;
         btn.Content = currentMove;
         btn.IsEnabled = false;
-        
+
         if (_gameInfo.GameTurnNumber >= 4)
             CheckWinner();
-        
+
         _gameInfo.GameTurnNumber++;
         UpdateTexts();
     }
@@ -89,15 +89,16 @@ public partial class TicTakToeClassic : Window
             }
         }
     }
+
     private void ShowWinner(string nickName)
     {
         MessageBox.Show($"WINNER {nickName}");
-        
+
         if (nickName == _firstNick)
             _gameInfo.FirstPlayerWins++;
         else
             _gameInfo.SecondPlayerWins++;
-            
+
         RestartGame();
     }
 
@@ -111,6 +112,7 @@ public partial class TicTakToeClassic : Window
                 _buttons[i, j].IsEnabled = true;
             }
         }
+
         _gameInfo.GameTurnNumber = 1;
         _gameInfo.AllPlayedGames++;
         UpdateTexts();

@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using WPF_Game_Tic_Tac_Toe.Data;
@@ -9,7 +8,7 @@ namespace WPF_Game_Tic_Tac_Toe.Windows;
 
 public partial class TicTacToeBig : Window
 {
- private static readonly Regex _regexX = new(@"[X]{5}", RegexOptions.Compiled);
+    private static readonly Regex _regexX = new(@"[X]{5}", RegexOptions.Compiled);
     private static readonly Regex _regex0 = new(@"[0]{5}", RegexOptions.Compiled);
 
     private readonly Game _gameInfo = new();
