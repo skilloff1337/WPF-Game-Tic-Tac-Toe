@@ -41,7 +41,12 @@ namespace WPF_Game_Tic_Tac_Toe
             newWindow.Show();
             this.Close();
         }
-
+        private void Button_OpenBigTicTacToe(object sender, RoutedEventArgs e)
+        {
+            var newWindow = new TicTacToeBig(_firstNick,_secondNick);
+            newWindow.Show();
+            this.Close();
+        }
 
         public void UpdateNickNames(string firstNick, string secondNick)
         {

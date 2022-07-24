@@ -37,7 +37,7 @@
         <StackPanel>
             <Button FontSize="22" Click="Button_ShowChangeNick">Change NickName</Button>
             <Button FontSize="27" Click="Button_OpenClassicTicTacToe">Tic Tak Toe (3x3)</Button>
-            <Button FontSize="22">Tic Tak Toe (15x15)</Button>
+            <Button FontSize="22" Click="Button_OpenBigTicTacToe">Tic Tak Toe (15x15)</Button>
             <Button Click="Button_ShowDescription">Description</Button>
         </StackPanel>
         <StackPanel HorizontalAlignment="Center">
