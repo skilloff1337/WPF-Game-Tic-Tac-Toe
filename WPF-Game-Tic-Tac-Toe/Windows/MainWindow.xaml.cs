@@ -35,6 +35,12 @@ namespace WPF_Game_Tic_Tac_Toe
             var newWindow = new DescriptionWindow();
             newWindow.ShowDialog();
         }
+        private void Button_OpenClassicTicTacToe(object sender, RoutedEventArgs e)
+        {
+            var newWindow = new TicTakToeClassic(_firstNick,_secondNick);
+            newWindow.Show();
+            this.Close();
+        }
 
 
         public void UpdateNickNames(string firstNick, string secondNick)
