@@ -1,4 +1,4 @@
-﻿<Window x:Class="WPF_Game_Tic_Tac_Toe.Windows.TicTakToeClassic"
+﻿<Window x:Name = "Window" x:Class="WPF_Game_Tic_Tac_Toe.Windows.TicTakToeClassic"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -70,7 +70,8 @@
                 <Button FontSize ="16" Width="100" Content="Change Nick" Margin="5" Command="{Binding   SetSecondNickName}"
                         CommandParameter="{Binding ElementName= SecondNick, Path=Text}" />
             </StackPanel>
-            <Button Style="{StaticResource Button}" Command="{Binding Back}">Back</Button>
+            <Button Style="{StaticResource Button}" Command="{Binding Back}"
+                    CommandParameter ="{Binding ElementName = Window}">Back</Button>
             <Button Style="{StaticResource Button}" Command="{Binding Restart}">Restart</Button>
             <TextBlock Style="{StaticResource Header}">Now walking:</TextBlock>
             <TextBlock Margin="0" Text="{Binding NowWalking}"></TextBlock>

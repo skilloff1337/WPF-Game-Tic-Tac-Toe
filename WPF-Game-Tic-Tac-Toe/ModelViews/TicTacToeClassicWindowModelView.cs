@@ -31,7 +31,7 @@ public class TicTacToeClassicWindowModelView : BindableBase
     public DelegateCommand<string> SetSecondNickName { get; }
     public DelegateCommand<object> ClickOnCell { get; }
     public DelegateCommand Restart { get; }
-    public DelegateCommand Back { get; }
+    public DelegateCommand<object> Back { get; }
 
     public TicTacToeClassicWindowModelView()
     {
@@ -70,7 +70,7 @@ public class TicTacToeClassicWindowModelView : BindableBase
             if (GameTurnNumber <= 4)
                 return;
 
-            var ticTacToe = new TicTacToe(GetButtons, 3);
+            var ticTacToe = new TicTacToe(GetButtons, GameModeType.Classic);
             var winner = ticTacToe.CheckWinner();
 
             if (winner != WinnerType.None)
@@ -84,7 +84,16 @@ public class TicTacToeClassicWindowModelView : BindableBase
 
         });
         Restart = new DelegateCommand(RestartGame);
-        Back = new DelegateCommand(BackToMainMenu);
+        Back = new DelegateCommand<object>(obj =>
+        {
+            if (obj is not Window win)
+                return;
+            
+            var mainWin = new MainWindow();
+            mainWin.Show();
+            
+            win.Close();
+        });
     }
 
     private void BackToMainMenu()
