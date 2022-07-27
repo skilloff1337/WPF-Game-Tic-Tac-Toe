@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -7,140 +6,126 @@ using WPF_Game_Tic_Tac_Toe.Models;
 using WPF_Game_Tic_Tac_Toe.Types;
 using WPF_Game_Tic_Tac_Toe.Windows;
 
-namespace WPF_Game_Tic_Tac_Toe.ModelViews;
-
-public class TicTacToeBigWindowModelView : BindableBase
+namespace WPF_Game_Tic_Tac_Toe.ModelViews
 {
-    private readonly Game _model = new(15);
-
-    public string FirstNick => _model.FirstNickName;
-
-    public string SecondNick => _model.SecondNickName;
-
-    public string NowWalking => _model.NowWalking;
-
-    public int AllPlayedGames => _model.AllPlayedGames;
-
-    public int FirstPlayerWins => _model.FirstPlayerWins;
-
-    public int SecondPlayerWins => _model.SecondPlayerWins;
-
-    public int GameTurnNumber => _model.GameTurnNumber;
-    public Button[,] GetButtons => _model.Buttons;
-
-    public DelegateCommand<string> SetFirstNickName { get; }
-    public DelegateCommand<string> SetSecondNickName { get; }
-    public DelegateCommand<object> ClickOnCell { get; }
-    public DelegateCommand Restart { get; }
-    public DelegateCommand<object> Back { get; }
-
-    public TicTacToeBigWindowModelView()
+    public class TicTacToeBigWindowModelView : BindableBase
     {
-        _model.PropertyChanged += (s, e) => { RaisePropertyChanged(e.PropertyName); };
+        public string FirstNick => _model.FirstNickName;
+        public string SecondNick => _model.SecondNickName;
+        public string NowWalking => _model.NowWalking;
+        public int AllPlayedGames => _model.AllPlayedGames;
+        public int FirstPlayerWins => _model.FirstPlayerWins;
+        public int SecondPlayerWins => _model.SecondPlayerWins;
 
-        SetFirstNickName = new DelegateCommand<string>(str =>
+        private readonly Game _model = new(15);
+        private int GameTurnNumber => _model.GameTurnNumber;
+        private Button[,] GetButtons => _model.Buttons;
+
+        public DelegateCommand<string> SetFirstNickName { get; }
+        public DelegateCommand<string> SetSecondNickName { get; }
+        public DelegateCommand<object> ClickOnCell { get; }
+        public DelegateCommand Restart { get; }
+        public DelegateCommand<object> Back { get; }
+
+        public TicTacToeBigWindowModelView()
         {
-            if (IsBadNickName(str))
-                return;
+            _model.PropertyChanged += (_, e) => { RaisePropertyChanged(e.PropertyName); };
 
-            _model.SetFirstNickName(str);
-        });
+            SetFirstNickName = new DelegateCommand<string>(str =>
+            {
+                if (IsBadNickName(str))
+                    return;
 
-        SetSecondNickName = new DelegateCommand<string>(str =>
-        {
-            if (IsBadNickName(str))
-                return;
+                _model.SetFirstNickName(str);
+            });
 
-            _model.SetSecondNickName(str);
-        });
+            SetSecondNickName = new DelegateCommand<string>(str =>
+            {
+                if (IsBadNickName(str))
+                    return;
 
-        ClickOnCell = new DelegateCommand<object>(obj =>
-        {
-            if (obj is not Button btn)
-                return;
+                _model.SetSecondNickName(str);
+            });
 
-            btn.Content = NowWalking == FirstNick ? "X" : "0";
-            btn.IsEnabled = false;
+            ClickOnCell = new DelegateCommand<object>(obj =>
+            {
+                if (obj is not Button btn)
+                    return;
 
-            var column = Grid.GetColumn(btn);
-            var row = Grid.GetRow(btn);
+                btn.Content = NowWalking == FirstNick ? "X" : "0";
+                btn.IsEnabled = false;
 
-            _model.SetButton(row, column, btn);
-            _model.AddGameTurnNumber();
+                var column = Grid.GetColumn(btn);
+                var row = Grid.GetRow(btn);
 
-            if (GameTurnNumber <= 9)
-                return;
+                _model.SetButton(row, column, btn);
+                _model.AddGameTurnNumber();
 
-            var ticTacToe = new TicTacToe(GetButtons, GameModeType.Big);
-            var winner = ticTacToe.CheckWinner();
+                if (GameTurnNumber <= 9)
+                    return;
 
-            if (winner != WinnerType.None)
-                ShowWinner(winner == WinnerType.PlayerOne ? FirstNick : SecondNick);
+                var ticTacToe = new TicTacToe(GetButtons, GameModeType.Big);
+                var winner = ticTacToe.CheckWinner();
 
-            if (GameTurnNumber <= 225) return;
+                if (winner != WinnerType.None)
+                    ShowWinner(winner == WinnerType.PlayerOne ? FirstNick : SecondNick);
 
-            MessageBox.Show("The winner is undecided! Restarting the game.");
-            RestartGame();
+                if (GameTurnNumber <= 225) return;
 
+                MessageBox.Show("The winner is undecided! Restarting the game.");
+                RestartGame();
+            });
+            Restart = new DelegateCommand(RestartGame);
+            Back = new DelegateCommand<object>(obj =>
+            {
+                if (obj is not Window win)
+                    return;
 
-        });
-        Restart = new DelegateCommand(RestartGame);
-        Back = new DelegateCommand<object>(obj =>
-        {
-            if (obj is not Window win)
-                return;
-                     
-            var mainWin = new MainWindow();
-            mainWin.Show();
-            
-            win.Close();
-        });
-    }
+                var mainWin = new MainWindow();
+                mainWin.Show();
 
-    private void BackToMainMenu()
-    {
-        var mainWin = new MainWindow();
-        Application.Current.MainWindow!.Close();
-        mainWin.Show();
-    }
-
-    private void ShowWinner(string nickName)
-    {
-        MessageBox.Show($"WINNER {nickName}");
-
-        if (nickName == FirstNick)
-            _model.AddFirstPlayerWin();
-        else
-            _model.AddSecondPlayerWin();
-
-        RestartGame();
-    }
-
-    private void RestartGame()
-    {
-        if (GameTurnNumber == 1)
-        {
-            MessageBox.Show("Error! The first move is impossible to restart the game.");
-            return;
+                win.Close();
+            });
         }
 
-        _model.ZeroingButtons(15);
-        _model.SetGameTurnNumber(1);
-        _model.AddPlayedGamesStats();
-    }
-
-    private bool IsBadNickName(string nick)
-    {
-        if (nick == FirstNick || nick == SecondNick)
+        private void ShowWinner(string nickName)
         {
-            MessageBox.Show("The nickname cannot be changed to the same or to the nickname of the opponent.");
+            MessageBox.Show($"WINNER {nickName}");
+
+            if (nickName == FirstNick)
+                _model.AddFirstPlayerWin();
+            else
+                _model.AddSecondPlayerWin();
+
+            RestartGame();
+        }
+
+        private void RestartGame()
+        {
+            if (GameTurnNumber == 1)
+            {
+                MessageBox.Show("Error! The first move is impossible to restart the game.");
+                return;
+            }
+
+            _model.ZeroingButtons(15);
+            _model.SetGameTurnNumber(1);
+            _model.AddPlayedGamesStats();
+        }
+
+        private bool IsBadNickName(string nick)
+        {
+            if (nick == FirstNick || nick == SecondNick)
+            {
+                MessageBox.Show("The nickname cannot be changed to the same or to the nickname of the opponent.");
+                return true;
+            }
+
+            if (!string.IsNullOrEmpty(nick))
+                return false;
+
+            MessageBox.Show("The nickname cannot be empty or contain only spaces.");
             return true;
         }
-
-        if (!string.IsNullOrEmpty(nick))
-            return false;
-
-        MessageBox.Show("The nickname cannot be empty or contain only spaces.");
-        return true;
     }
 }

@@ -1,7 +1,8 @@
-﻿namespace WPF_Game_Tic_Tac_Toe.Types;
-
-public enum GameModeType
+﻿namespace WPF_Game_Tic_Tac_Toe.Types
 {
-    Classic,
-    Big
+    public enum GameModeType
+    {
+        Classic,
+        Big
+    }
 }

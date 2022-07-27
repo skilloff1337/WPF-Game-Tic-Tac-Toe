@@ -34,12 +34,6 @@ namespace WPF_Game_Tic_Tac_Toe.Models
             RaisePropertyChanged("SecondNick");
         }
 
-        public void SetCurrentNowWalking()
-        {
-            NowWalking = GameTurnNumber % 2 == 0 ? SecondNickName : FirstNickName;
-            RaisePropertyChanged("NowWalking");
-        }
-
         public void AddPlayedGamesStats()
         {
             AllPlayedGames++;
@@ -75,7 +69,6 @@ namespace WPF_Game_Tic_Tac_Toe.Models
         public void SetButton(int row, int column, Button value)
         {
             Buttons[row, column] = value;
-            //  RaisePropertyChanged("GetButtons");
         }
 
         public void ZeroingButtons(int maxIndexButton)
@@ -84,15 +77,21 @@ namespace WPF_Game_Tic_Tac_Toe.Models
             {
                 for (var j = 0; j < maxIndexButton; j++)
                 {
-                    var bttn = Buttons[i, j];
-                    if (bttn == null)
+                    var button = Buttons[i, j];
+                    if (button == null)
                         continue;
 
-                    bttn.Content = null;
-                    bttn.IsEnabled = true;
-                    bttn = null;
+                    button.Content = null;
+                    button.IsEnabled = true;
+                    button = null;
                 }
             }
+        }
+
+        private void SetCurrentNowWalking()
+        {
+            NowWalking = GameTurnNumber % 2 == 0 ? SecondNickName : FirstNickName;
+            RaisePropertyChanged("NowWalking");
         }
     }
 }

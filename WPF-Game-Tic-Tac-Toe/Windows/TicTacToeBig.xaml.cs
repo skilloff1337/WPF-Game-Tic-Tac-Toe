@@ -1,11 +1,12 @@
 ﻿using System.Windows;
 
-namespace WPF_Game_Tic_Tac_Toe.Windows;
-
-public partial class TicTacToeBig : Window
+namespace WPF_Game_Tic_Tac_Toe.Windows
 {
-    public TicTacToeBig()
+    public partial class TicTacToeBig : Window
     {
-        InitializeComponent();
+        public TicTacToeBig()
+        {
+            InitializeComponent();
+        }
     }
 }

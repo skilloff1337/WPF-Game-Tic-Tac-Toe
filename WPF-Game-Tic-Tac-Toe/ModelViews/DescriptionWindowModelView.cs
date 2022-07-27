@@ -1,20 +1,20 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using Prism.Commands;
 
-namespace WPF_Game_Tic_Tac_Toe.ModelViews;
-
-public class DescriptionWindowModelView
+namespace WPF_Game_Tic_Tac_Toe.ModelViews
 {
-    public DelegateCommand<object> Close { get; }
-
-    public DescriptionWindowModelView()
+    public class DescriptionWindowModelView
     {
-        Close = new DelegateCommand<object>(obj =>
+        public DelegateCommand<object> Close { get; }
+
+        public DescriptionWindowModelView()
         {
-            if (obj is not Window win)
-                return;
-            win.Close();
-        });
+            Close = new DelegateCommand<object>(obj =>
+            {
+                if (obj is not Window win)
+                    return;
+                win.Close();
+            });
+        }
     }
 }
