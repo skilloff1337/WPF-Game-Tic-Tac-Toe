@@ -1,11 +1,15 @@
-﻿<Window x:Class="WPF_Game_Tic_Tac_Toe.Windows.DescriptionWindow"
+﻿<Window x:Name = "Window" x:Class="WPF_Game_Tic_Tac_Toe.Windows.DescriptionWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:WPF_Game_Tic_Tac_Toe.Windows"
+        xmlns:modelView="clr-namespace:WPF_Game_Tic_Tac_Toe.ModelViews"
         mc:Ignorable="d"
         Title="DescriptionWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <modelView:DescriptionWindowModelView />
+    </Window.DataContext>
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="HorizontalAlignment" Value="Center"></Setter>
@@ -52,6 +56,7 @@
                 the free cells.
             </TextBlock>
         </StackPanel>
-        <Button Grid.Column="1" Click="Button_CloseWindow">Close</Button>
+        <Button Grid.Column="1" Command="{Binding Close}" 
+                CommandParameter ="{Binding ElementName = Window}">Close</Button>
     </Grid>
 </Window>

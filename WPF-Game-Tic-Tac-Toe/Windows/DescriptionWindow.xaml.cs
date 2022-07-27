@@ -8,9 +8,4 @@ public partial class DescriptionWindow : Window
     {
         InitializeComponent();
     }
-
-    private void Button_CloseWindow(object sender, RoutedEventArgs e)
-    {
-        this.Close();
-    }
 }
