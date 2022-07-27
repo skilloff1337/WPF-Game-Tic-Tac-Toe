@@ -1,12 +1,16 @@
-﻿<Window x:Class="WPF_Game_Tic_Tac_Toe.Windows.TicTacToeBig"
+﻿<Window x:Name = "Window" x:Class="WPF_Game_Tic_Tac_Toe.Windows.TicTacToeBig"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:WPF_Game_Tic_Tac_Toe.Windows"
+        xmlns:modelViews="clr-namespace:WPF_Game_Tic_Tac_Toe.ModelViews"
         mc:Ignorable="d"
-        Title="TicTacToeBig" Height="550" Width="800">
-    <!--<Window.Resources>
+        Title="TicTacToeBig" Height="650" Width="900">
+    <Window.DataContext>
+        <modelViews:TicTacToeBigWindowModelView />
+    </Window.DataContext>
+    <Window.Resources>
         <Style x:Key="Button" TargetType="Button">
             <Setter Property="Margin" Value="0 10 0 0"></Setter>
             <Setter Property="HorizontalAlignment" Value="Center"></Setter>
@@ -15,7 +19,10 @@
             <Setter Property="Width" Value="100"></Setter>
             <Setter Property="Height" Value="50"></Setter>
         </Style>
-        <Style TargetType="TextBlock">
+            <Style TargetType="Button">
+                    <Setter Property="FontSize" Value="25"></Setter>
+            </Style>
+            <Style TargetType="TextBlock">
             <Setter Property="TextAlignment" Value="Center"></Setter>
             <Setter Property="HorizontalAlignment" Value="Center"></Setter>
             <Setter Property="VerticalAlignment" Value="Top"></Setter>
@@ -65,16 +72,719 @@
             <RowDefinition Height="1*" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
-
         <StackPanel Grid.Row="0" Grid.Column="15" Grid.RowSpan="15">
-            <Button Style="{StaticResource Button}" Click="Button_OpenMainWindow">Back</Button>
-            <Button Style="{StaticResource Button}" Click="RestartGame">Restart</Button>
-            <TextBlock Style="{StaticResource Header}">Nicknames:</TextBlock>
-            <TextBlock x:Name="NicknamesPlayers" Margin="0"></TextBlock>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Label Content="NickName №1"></Label>
+                <Label Content="NickName №2"></Label>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBox x:Name="FirstNick" Width="100" Margin="5" Text="{Binding FirstNick , Mode=OneWay}" />
+                <TextBox x:Name="SecondNick" Width="100" Margin="5" Text="{Binding SecondNick, Mode=OneWay}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button FontSize="16" Width="100" Content="Change Nick" Margin="5"
+                        Command="{Binding   SetFirstNickName}"
+                        CommandParameter="{Binding ElementName= FirstNick, Path=.Text}" />
+                <Button FontSize="16" Width="100" Content="Change Nick" Margin="5"
+                        Command="{Binding   SetSecondNickName}"
+                        CommandParameter="{Binding ElementName= SecondNick, Path=Text}" />
+            </StackPanel>
+            <Button Style="{StaticResource Button}" Command="{Binding Back}"
+                    CommandParameter ="{Binding ElementName = Window}">Back</Button>
+                <Button Style="{StaticResource Button}" Command="{Binding Restart}">Restart</Button>
             <TextBlock Style="{StaticResource Header}">Now walking:</TextBlock>
-            <TextBlock x:Name="NowWalking" Margin="0"></TextBlock>
+            <TextBlock Margin="0" Text="{Binding NowWalking}"></TextBlock>
             <TextBlock Style="{StaticResource Header}">Statistics:</TextBlock>
-            <TextBlock x:Name="Statistics" Margin="0"></TextBlock>
+            <TextBlock>
+                <Run Text="Games played: " />
+                <Run Text="{Binding   AllPlayedGames, Mode=OneWay}" />
+            </TextBlock>
+            <TextBlock>
+                <Run Text="{Binding FirstNick, Mode=OneWay}" />
+                <Run Text=" wins:" />
+                <Run Text="{Binding FirstPlayerWins, Mode=OneWay}"></Run>
+            </TextBlock>
+            <TextBlock>
+                <Run Text="{Binding SecondNick, Mode=OneWay}" />
+                <Run Text=" wins:" />
+                <Run Text="{Binding SecondPlayerWins, Mode=OneWay}"></Run>
+            </TextBlock>
         </StackPanel>
-    </Grid>-->
+        <Button x:Name="Br0C0" Grid.Row="0" Grid.Column="0" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br0C0}">
+        </Button>
+        <Button x:Name="Br0C1" Grid.Row="0" Grid.Column="1" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br0C1}">
+        </Button>
+        <Button x:Name="Br0C2" Grid.Row="0" Grid.Column="2" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br0C2}">
+        </Button>
+        <Button x:Name="Br0C3" Grid.Row="0" Grid.Column="3" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br0C3}">
+        </Button>
+        <Button x:Name="Br0C4" Grid.Row="0" Grid.Column="4" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br0C4}">
+        </Button>
+        <Button x:Name="Br0C5" Grid.Row="0" Grid.Column="5" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br0C5}">
+        </Button>
+        <Button x:Name="Br0C6" Grid.Row="0" Grid.Column="6" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br0C6}">
+        </Button>
+        <Button x:Name="Br0C7" Grid.Row="0" Grid.Column="7" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br0C7}">
+        </Button>
+        <Button x:Name="Br0C8" Grid.Row="0" Grid.Column="8" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br0C8}">
+        </Button>
+        <Button x:Name="Br0C9" Grid.Row="0" Grid.Column="9" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br0C9}">
+        </Button>
+        <Button x:Name="Br0C10" Grid.Row="0" Grid.Column="10" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br0C10}">
+        </Button>
+        <Button x:Name="Br0C11" Grid.Row="0" Grid.Column="11" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br0C11}">
+        </Button>
+        <Button x:Name="Br0C12" Grid.Row="0" Grid.Column="12" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br0C12}">
+        </Button>
+        <Button x:Name="Br0C13" Grid.Row="0" Grid.Column="13" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br0C13}">
+        </Button>
+        <Button x:Name="Br0C14" Grid.Row="0" Grid.Column="14" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br0C14}">
+        </Button>
+        <Button x:Name="Br1C0" Grid.Row="1" Grid.Column="0" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br1C0}">
+        </Button>
+        <Button x:Name="Br1C1" Grid.Row="1" Grid.Column="1" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br1C1}">
+        </Button>
+        <Button x:Name="Br1C2" Grid.Row="1" Grid.Column="2" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br1C2}">
+        </Button>
+        <Button x:Name="Br1C3" Grid.Row="1" Grid.Column="3" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br1C3}">
+        </Button>
+        <Button x:Name="Br1C4" Grid.Row="1" Grid.Column="4" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br1C4}">
+        </Button>
+        <Button x:Name="Br1C5" Grid.Row="1" Grid.Column="5" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br1C5}">
+        </Button>
+        <Button x:Name="Br1C6" Grid.Row="1" Grid.Column="6" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br1C6}">
+        </Button>
+        <Button x:Name="Br1C7" Grid.Row="1" Grid.Column="7" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br1C7}">
+        </Button>
+        <Button x:Name="Br1C8" Grid.Row="1" Grid.Column="8" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br1C8}">
+        </Button>
+        <Button x:Name="Br1C9" Grid.Row="1" Grid.Column="9" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br1C9}">
+        </Button>
+        <Button x:Name="Br1C10" Grid.Row="1" Grid.Column="10" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br1C10}">
+        </Button>
+        <Button x:Name="Br1C11" Grid.Row="1" Grid.Column="11" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br1C11}">
+        </Button>
+        <Button x:Name="Br1C12" Grid.Row="1" Grid.Column="12" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br1C12}">
+        </Button>
+        <Button x:Name="Br1C13" Grid.Row="1" Grid.Column="13" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br1C13}">
+        </Button>
+        <Button x:Name="Br1C14" Grid.Row="1" Grid.Column="14" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br1C14}">
+        </Button>
+        <Button x:Name="Br2C0" Grid.Row="2" Grid.Column="0" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br2C0}">
+        </Button>
+        <Button x:Name="Br2C1" Grid.Row="2" Grid.Column="1" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br2C1}">
+        </Button>
+        <Button x:Name="Br2C2" Grid.Row="2" Grid.Column="2" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br2C2}">
+        </Button>
+        <Button x:Name="Br2C3" Grid.Row="2" Grid.Column="3" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br2C3}">
+        </Button>
+        <Button x:Name="Br2C4" Grid.Row="2" Grid.Column="4" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br2C4}">
+        </Button>
+        <Button x:Name="Br2C5" Grid.Row="2" Grid.Column="5" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br2C5}">
+        </Button>
+        <Button x:Name="Br2C6" Grid.Row="2" Grid.Column="6" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br2C6}">
+        </Button>
+        <Button x:Name="Br2C7" Grid.Row="2" Grid.Column="7" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br2C7}">
+        </Button>
+        <Button x:Name="Br2C8" Grid.Row="2" Grid.Column="8" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br2C8}">
+        </Button>
+        <Button x:Name="Br2C9" Grid.Row="2" Grid.Column="9" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br2C9}">
+        </Button>
+        <Button x:Name="Br2C10" Grid.Row="2" Grid.Column="10" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br2C10}">
+        </Button>
+        <Button x:Name="Br2C11" Grid.Row="2" Grid.Column="11" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br2C11}">
+        </Button>
+        <Button x:Name="Br2C12" Grid.Row="2" Grid.Column="12" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br2C12}">
+        </Button>
+        <Button x:Name="Br2C13" Grid.Row="2" Grid.Column="13" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br2C13}">
+        </Button>
+        <Button x:Name="Br2C14" Grid.Row="2" Grid.Column="14" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br2C14}">
+        </Button>
+        <Button x:Name="Br3C0" Grid.Row="3" Grid.Column="0" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br3C0}">
+        </Button>
+        <Button x:Name="Br3C1" Grid.Row="3" Grid.Column="1" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br3C1}">
+        </Button>
+        <Button x:Name="Br3C2" Grid.Row="3" Grid.Column="2" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br3C2}">
+        </Button>
+        <Button x:Name="Br3C3" Grid.Row="3" Grid.Column="3" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br3C3}">
+        </Button>
+        <Button x:Name="Br3C4" Grid.Row="3" Grid.Column="4" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br3C4}">
+        </Button>
+        <Button x:Name="Br3C5" Grid.Row="3" Grid.Column="5" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br3C5}">
+        </Button>
+        <Button x:Name="Br3C6" Grid.Row="3" Grid.Column="6" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br3C6}">
+        </Button>
+        <Button x:Name="Br3C7" Grid.Row="3" Grid.Column="7" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br3C7}">
+        </Button>
+        <Button x:Name="Br3C8" Grid.Row="3" Grid.Column="8" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br3C8}">
+        </Button>
+        <Button x:Name="Br3C9" Grid.Row="3" Grid.Column="9" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br3C9}">
+        </Button>
+        <Button x:Name="Br3C10" Grid.Row="3" Grid.Column="10" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br3C10}">
+        </Button>
+        <Button x:Name="Br3C11" Grid.Row="3" Grid.Column="11" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br3C11}">
+        </Button>
+        <Button x:Name="Br3C12" Grid.Row="3" Grid.Column="12" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br3C12}">
+        </Button>
+        <Button x:Name="Br3C13" Grid.Row="3" Grid.Column="13" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br3C13}">
+        </Button>
+        <Button x:Name="Br3C14" Grid.Row="3" Grid.Column="14" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br3C14}">
+        </Button>
+        <Button x:Name="Br4C0" Grid.Row="4" Grid.Column="0" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br4C0}">
+        </Button>
+        <Button x:Name="Br4C1" Grid.Row="4" Grid.Column="1" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br4C1}">
+        </Button>
+        <Button x:Name="Br4C2" Grid.Row="4" Grid.Column="2" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br4C2}">
+        </Button>
+        <Button x:Name="Br4C3" Grid.Row="4" Grid.Column="3" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br4C3}">
+        </Button>
+        <Button x:Name="Br4C4" Grid.Row="4" Grid.Column="4" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br4C4}">
+        </Button>
+        <Button x:Name="Br4C5" Grid.Row="4" Grid.Column="5" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br4C5}">
+        </Button>
+        <Button x:Name="Br4C6" Grid.Row="4" Grid.Column="6" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br4C6}">
+        </Button>
+        <Button x:Name="Br4C7" Grid.Row="4" Grid.Column="7" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br4C7}">
+        </Button>
+        <Button x:Name="Br4C8" Grid.Row="4" Grid.Column="8" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br4C8}">
+        </Button>
+        <Button x:Name="Br4C9" Grid.Row="4" Grid.Column="9" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br4C9}">
+        </Button>
+        <Button x:Name="Br4C10" Grid.Row="4" Grid.Column="10" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br4C10}">
+        </Button>
+        <Button x:Name="Br4C11" Grid.Row="4" Grid.Column="11" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br4C11}">
+        </Button>
+        <Button x:Name="Br4C12" Grid.Row="4" Grid.Column="12" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br4C12}">
+        </Button>
+        <Button x:Name="Br4C13" Grid.Row="4" Grid.Column="13" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br4C13}">
+        </Button>
+        <Button x:Name="Br4C14" Grid.Row="4" Grid.Column="14" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br4C14}">
+        </Button>
+        <Button x:Name="Br5C0" Grid.Row="5" Grid.Column="0" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br5C0}">
+        </Button>
+        <Button x:Name="Br5C1" Grid.Row="5" Grid.Column="1" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br5C1}">
+        </Button>
+        <Button x:Name="Br5C2" Grid.Row="5" Grid.Column="2" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br5C2}">
+        </Button>
+        <Button x:Name="Br5C3" Grid.Row="5" Grid.Column="3" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br5C3}">
+        </Button>
+        <Button x:Name="Br5C4" Grid.Row="5" Grid.Column="4" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br5C4}">
+        </Button>
+        <Button x:Name="Br5C5" Grid.Row="5" Grid.Column="5" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br5C5}">
+        </Button>
+        <Button x:Name="Br5C6" Grid.Row="5" Grid.Column="6" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br5C6}">
+        </Button>
+        <Button x:Name="Br5C7" Grid.Row="5" Grid.Column="7" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br5C7}">
+        </Button>
+        <Button x:Name="Br5C8" Grid.Row="5" Grid.Column="8" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br5C8}">
+        </Button>
+        <Button x:Name="Br5C9" Grid.Row="5" Grid.Column="9" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br5C9}">
+        </Button>
+        <Button x:Name="Br5C10" Grid.Row="5" Grid.Column="10" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br5C10}">
+        </Button>
+        <Button x:Name="Br5C11" Grid.Row="5" Grid.Column="11" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br5C11}">
+        </Button>
+        <Button x:Name="Br5C12" Grid.Row="5" Grid.Column="12" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br5C12}">
+        </Button>
+        <Button x:Name="Br5C13" Grid.Row="5" Grid.Column="13" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br5C13}">
+        </Button>
+        <Button x:Name="Br5C14" Grid.Row="5" Grid.Column="14" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br5C14}">
+        </Button>
+        <Button x:Name="Br6C0" Grid.Row="6" Grid.Column="0" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br6C0}">
+        </Button>
+        <Button x:Name="Br6C1" Grid.Row="6" Grid.Column="1" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br6C1}">
+        </Button>
+        <Button x:Name="Br6C2" Grid.Row="6" Grid.Column="2" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br6C2}">
+        </Button>
+        <Button x:Name="Br6C3" Grid.Row="6" Grid.Column="3" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br6C3}">
+        </Button>
+        <Button x:Name="Br6C4" Grid.Row="6" Grid.Column="4" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br6C4}">
+        </Button>
+        <Button x:Name="Br6C5" Grid.Row="6" Grid.Column="5" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br6C5}">
+        </Button>
+        <Button x:Name="Br6C6" Grid.Row="6" Grid.Column="6" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br6C6}">
+        </Button>
+        <Button x:Name="Br6C7" Grid.Row="6" Grid.Column="7" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br6C7}">
+        </Button>
+        <Button x:Name="Br6C8" Grid.Row="6" Grid.Column="8" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br6C8}">
+        </Button>
+        <Button x:Name="Br6C9" Grid.Row="6" Grid.Column="9" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br6C9}">
+        </Button>
+        <Button x:Name="Br6C10" Grid.Row="6" Grid.Column="10" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br6C10}">
+        </Button>
+        <Button x:Name="Br6C11" Grid.Row="6" Grid.Column="11" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br6C11}">
+        </Button>
+        <Button x:Name="Br6C12" Grid.Row="6" Grid.Column="12" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br6C12}">
+        </Button>
+        <Button x:Name="Br6C13" Grid.Row="6" Grid.Column="13" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br6C13}">
+        </Button>
+        <Button x:Name="Br6C14" Grid.Row="6" Grid.Column="14" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br6C14}">
+        </Button>
+        <Button x:Name="Br7C0" Grid.Row="7" Grid.Column="0" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br7C0}">
+        </Button>
+        <Button x:Name="Br7C1" Grid.Row="7" Grid.Column="1" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br7C1}">
+        </Button>
+        <Button x:Name="Br7C2" Grid.Row="7" Grid.Column="2" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br7C2}">
+        </Button>
+        <Button x:Name="Br7C3" Grid.Row="7" Grid.Column="3" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br7C3}">
+        </Button>
+        <Button x:Name="Br7C4" Grid.Row="7" Grid.Column="4" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br7C4}">
+        </Button>
+        <Button x:Name="Br7C5" Grid.Row="7" Grid.Column="5" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br7C5}">
+        </Button>
+        <Button x:Name="Br7C6" Grid.Row="7" Grid.Column="6" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br7C6}">
+        </Button>
+        <Button x:Name="Br7C7" Grid.Row="7" Grid.Column="7" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br7C7}">
+        </Button>
+        <Button x:Name="Br7C8" Grid.Row="7" Grid.Column="8" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br7C8}">
+        </Button>
+        <Button x:Name="Br7C9" Grid.Row="7" Grid.Column="9" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br7C9}">
+        </Button>
+        <Button x:Name="Br7C10" Grid.Row="7" Grid.Column="10" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br7C10}">
+        </Button>
+        <Button x:Name="Br7C11" Grid.Row="7" Grid.Column="11" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br7C11}">
+        </Button>
+        <Button x:Name="Br7C12" Grid.Row="7" Grid.Column="12" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br7C12}">
+        </Button>
+        <Button x:Name="Br7C13" Grid.Row="7" Grid.Column="13" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br7C13}">
+        </Button>
+        <Button x:Name="Br7C14" Grid.Row="7" Grid.Column="14" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br7C14}">
+        </Button>
+        <Button x:Name="Br8C0" Grid.Row="8" Grid.Column="0" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br8C0}">
+        </Button>
+        <Button x:Name="Br8C1" Grid.Row="8" Grid.Column="1" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br8C1}">
+        </Button>
+        <Button x:Name="Br8C2" Grid.Row="8" Grid.Column="2" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br8C2}">
+        </Button>
+        <Button x:Name="Br8C3" Grid.Row="8" Grid.Column="3" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br8C3}">
+        </Button>
+        <Button x:Name="Br8C4" Grid.Row="8" Grid.Column="4" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br8C4}">
+        </Button>
+        <Button x:Name="Br8C5" Grid.Row="8" Grid.Column="5" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br8C5}">
+        </Button>
+        <Button x:Name="Br8C6" Grid.Row="8" Grid.Column="6" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br8C6}">
+        </Button>
+        <Button x:Name="Br8C7" Grid.Row="8" Grid.Column="7" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br8C7}">
+        </Button>
+        <Button x:Name="Br8C8" Grid.Row="8" Grid.Column="8" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br8C8}">
+        </Button>
+        <Button x:Name="Br8C9" Grid.Row="8" Grid.Column="9" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br8C9}">
+        </Button>
+        <Button x:Name="Br8C10" Grid.Row="8" Grid.Column="10" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br8C10}">
+        </Button>
+        <Button x:Name="Br8C11" Grid.Row="8" Grid.Column="11" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br8C11}">
+        </Button>
+        <Button x:Name="Br8C12" Grid.Row="8" Grid.Column="12" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br8C12}">
+        </Button>
+        <Button x:Name="Br8C13" Grid.Row="8" Grid.Column="13" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br8C13}">
+        </Button>
+        <Button x:Name="Br8C14" Grid.Row="8" Grid.Column="14" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br8C14}">
+        </Button>
+        <Button x:Name="Br9C0" Grid.Row="9" Grid.Column="0" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br9C0}">
+        </Button>
+        <Button x:Name="Br9C1" Grid.Row="9" Grid.Column="1" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br9C1}">
+        </Button>
+        <Button x:Name="Br9C2" Grid.Row="9" Grid.Column="2" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br9C2}">
+        </Button>
+        <Button x:Name="Br9C3" Grid.Row="9" Grid.Column="3" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br9C3}">
+        </Button>
+        <Button x:Name="Br9C4" Grid.Row="9" Grid.Column="4" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br9C4}">
+        </Button>
+        <Button x:Name="Br9C5" Grid.Row="9" Grid.Column="5" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br9C5}">
+        </Button>
+        <Button x:Name="Br9C6" Grid.Row="9" Grid.Column="6" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br9C6}">
+        </Button>
+        <Button x:Name="Br9C7" Grid.Row="9" Grid.Column="7" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br9C7}">
+        </Button>
+        <Button x:Name="Br9C8" Grid.Row="9" Grid.Column="8" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br9C8}">
+        </Button>
+        <Button x:Name="Br9C9" Grid.Row="9" Grid.Column="9" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br9C9}">
+        </Button>
+        <Button x:Name="Br9C10" Grid.Row="9" Grid.Column="10" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br9C10}">
+        </Button>
+        <Button x:Name="Br9C11" Grid.Row="9" Grid.Column="11" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br9C11}">
+        </Button>
+        <Button x:Name="Br9C12" Grid.Row="9" Grid.Column="12" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br9C12}">
+        </Button>
+        <Button x:Name="Br9C13" Grid.Row="9" Grid.Column="13" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br9C13}">
+        </Button>
+        <Button x:Name="Br9C14" Grid.Row="9" Grid.Column="14" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br9C14}">
+        </Button>
+        <Button x:Name="Br10C0" Grid.Row="10" Grid.Column="0" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br10C0}">
+        </Button>
+        <Button x:Name="Br10C1" Grid.Row="10" Grid.Column="1" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br10C1}">
+        </Button>
+        <Button x:Name="Br10C2" Grid.Row="10" Grid.Column="2" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br10C2}">
+        </Button>
+        <Button x:Name="Br10C3" Grid.Row="10" Grid.Column="3" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br10C3}">
+        </Button>
+        <Button x:Name="Br10C4" Grid.Row="10" Grid.Column="4" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br10C4}">
+        </Button>
+        <Button x:Name="Br10C5" Grid.Row="10" Grid.Column="5" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br10C5}">
+        </Button>
+        <Button x:Name="Br10C6" Grid.Row="10" Grid.Column="6" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br10C6}">
+        </Button>
+        <Button x:Name="Br10C7" Grid.Row="10" Grid.Column="7" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br10C7}">
+        </Button>
+        <Button x:Name="Br10C8" Grid.Row="10" Grid.Column="8" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br10C8}">
+        </Button>
+        <Button x:Name="Br10C9" Grid.Row="10" Grid.Column="9" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br10C9}">
+        </Button>
+        <Button x:Name="Br10C10" Grid.Row="10" Grid.Column="10" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br10C10}">
+        </Button>
+        <Button x:Name="Br10C11" Grid.Row="10" Grid.Column="11" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br10C11}">
+        </Button>
+        <Button x:Name="Br10C12" Grid.Row="10" Grid.Column="12" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br10C12}">
+        </Button>
+        <Button x:Name="Br10C13" Grid.Row="10" Grid.Column="13" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br10C13}">
+        </Button>
+        <Button x:Name="Br10C14" Grid.Row="10" Grid.Column="14" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br10C14}">
+        </Button>
+        <Button x:Name="Br11C0" Grid.Row="11" Grid.Column="0" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br11C0}">
+        </Button>
+        <Button x:Name="Br11C1" Grid.Row="11" Grid.Column="1" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br11C1}">
+        </Button>
+        <Button x:Name="Br11C2" Grid.Row="11" Grid.Column="2" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br11C2}">
+        </Button>
+        <Button x:Name="Br11C3" Grid.Row="11" Grid.Column="3" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br11C3}">
+        </Button>
+        <Button x:Name="Br11C4" Grid.Row="11" Grid.Column="4" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br11C4}">
+        </Button>
+        <Button x:Name="Br11C5" Grid.Row="11" Grid.Column="5" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br11C5}">
+        </Button>
+        <Button x:Name="Br11C6" Grid.Row="11" Grid.Column="6" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br11C6}">
+        </Button>
+        <Button x:Name="Br11C7" Grid.Row="11" Grid.Column="7" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br11C7}">
+        </Button>
+        <Button x:Name="Br11C8" Grid.Row="11" Grid.Column="8" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br11C8}">
+        </Button>
+        <Button x:Name="Br11C9" Grid.Row="11" Grid.Column="9" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br11C9}">
+        </Button>
+        <Button x:Name="Br11C10" Grid.Row="11" Grid.Column="10" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br11C10}">
+        </Button>
+        <Button x:Name="Br11C11" Grid.Row="11" Grid.Column="11" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br11C11}">
+        </Button>
+        <Button x:Name="Br11C12" Grid.Row="11" Grid.Column="12" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br11C12}">
+        </Button>
+        <Button x:Name="Br11C13" Grid.Row="11" Grid.Column="13" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br11C13}">
+        </Button>
+        <Button x:Name="Br11C14" Grid.Row="11" Grid.Column="14" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br11C14}">
+        </Button>
+        <Button x:Name="Br12C0" Grid.Row="12" Grid.Column="0" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br12C0}">
+        </Button>
+        <Button x:Name="Br12C1" Grid.Row="12" Grid.Column="1" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br12C1}">
+        </Button>
+        <Button x:Name="Br12C2" Grid.Row="12" Grid.Column="2" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br12C2}">
+        </Button>
+        <Button x:Name="Br12C3" Grid.Row="12" Grid.Column="3" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br12C3}">
+        </Button>
+        <Button x:Name="Br12C4" Grid.Row="12" Grid.Column="4" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br12C4}">
+        </Button>
+        <Button x:Name="Br12C5" Grid.Row="12" Grid.Column="5" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br12C5}">
+        </Button>
+        <Button x:Name="Br12C6" Grid.Row="12" Grid.Column="6" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br12C6}">
+        </Button>
+        <Button x:Name="Br12C7" Grid.Row="12" Grid.Column="7" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br12C7}">
+        </Button>
+        <Button x:Name="Br12C8" Grid.Row="12" Grid.Column="8" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br12C8}">
+        </Button>
+        <Button x:Name="Br12C9" Grid.Row="12" Grid.Column="9" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br12C9}">
+        </Button>
+        <Button x:Name="Br12C10" Grid.Row="12" Grid.Column="10" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br12C10}">
+        </Button>
+        <Button x:Name="Br12C11" Grid.Row="12" Grid.Column="11" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br12C11}">
+        </Button>
+        <Button x:Name="Br12C12" Grid.Row="12" Grid.Column="12" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br12C12}">
+        </Button>
+        <Button x:Name="Br12C13" Grid.Row="12" Grid.Column="13" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br12C13}">
+        </Button>
+        <Button x:Name="Br12C14" Grid.Row="12" Grid.Column="14" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br12C14}">
+        </Button>
+        <Button x:Name="Br13C0" Grid.Row="13" Grid.Column="0" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br13C0}">
+        </Button>
+        <Button x:Name="Br13C1" Grid.Row="13" Grid.Column="1" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br13C1}">
+        </Button>
+        <Button x:Name="Br13C2" Grid.Row="13" Grid.Column="2" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br13C2}">
+        </Button>
+        <Button x:Name="Br13C3" Grid.Row="13" Grid.Column="3" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br13C3}">
+        </Button>
+        <Button x:Name="Br13C4" Grid.Row="13" Grid.Column="4" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br13C4}">
+        </Button>
+        <Button x:Name="Br13C5" Grid.Row="13" Grid.Column="5" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br13C5}">
+        </Button>
+        <Button x:Name="Br13C6" Grid.Row="13" Grid.Column="6" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br13C6}">
+        </Button>
+        <Button x:Name="Br13C7" Grid.Row="13" Grid.Column="7" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br13C7}">
+        </Button>
+        <Button x:Name="Br13C8" Grid.Row="13" Grid.Column="8" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br13C8}">
+        </Button>
+        <Button x:Name="Br13C9" Grid.Row="13" Grid.Column="9" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br13C9}">
+        </Button>
+        <Button x:Name="Br13C10" Grid.Row="13" Grid.Column="10" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br13C10}">
+        </Button>
+        <Button x:Name="Br13C11" Grid.Row="13" Grid.Column="11" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br13C11}">
+        </Button>
+        <Button x:Name="Br13C12" Grid.Row="13" Grid.Column="12" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br13C12}">
+        </Button>
+        <Button x:Name="Br13C13" Grid.Row="13" Grid.Column="13" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br13C13}">
+        </Button>
+        <Button x:Name="Br13C14" Grid.Row="13" Grid.Column="14" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br13C14}">
+        </Button>
+        <Button x:Name="Br14C0" Grid.Row="14" Grid.Column="0" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br14C0}">
+        </Button>
+        <Button x:Name="Br14C1" Grid.Row="14" Grid.Column="1" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br14C1}">
+        </Button>
+        <Button x:Name="Br14C2" Grid.Row="14" Grid.Column="2" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br14C2}">
+        </Button>
+        <Button x:Name="Br14C3" Grid.Row="14" Grid.Column="3" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br14C3}">
+        </Button>
+        <Button x:Name="Br14C4" Grid.Row="14" Grid.Column="4" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br14C4}">
+        </Button>
+        <Button x:Name="Br14C5" Grid.Row="14" Grid.Column="5" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br14C5}">
+        </Button>
+        <Button x:Name="Br14C6" Grid.Row="14" Grid.Column="6" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br14C6}">
+        </Button>
+        <Button x:Name="Br14C7" Grid.Row="14" Grid.Column="7" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br14C7}">
+        </Button>
+        <Button x:Name="Br14C8" Grid.Row="14" Grid.Column="8" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br14C8}">
+        </Button>
+        <Button x:Name="Br14C9" Grid.Row="14" Grid.Column="9" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br14C9}">
+        </Button>
+        <Button x:Name="Br14C10" Grid.Row="14" Grid.Column="10" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br14C10}">
+        </Button>
+        <Button x:Name="Br14C11" Grid.Row="14" Grid.Column="11" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br14C11}">
+        </Button>
+        <Button x:Name="Br14C12" Grid.Row="14" Grid.Column="12" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br14C12}">
+        </Button>
+        <Button x:Name="Br14C13" Grid.Row="14" Grid.Column="13" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br14C13}">
+        </Button>
+        <Button x:Name="Br14C14" Grid.Row="14" Grid.Column="14" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = Br14C14}">
+        </Button>
+
+    </Grid>
 </Window>

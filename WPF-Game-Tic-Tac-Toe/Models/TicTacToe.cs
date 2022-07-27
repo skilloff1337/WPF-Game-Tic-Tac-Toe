@@ -8,17 +8,28 @@ namespace WPF_Game_Tic_Tac_Toe.Models
 {
     public class TicTacToe
     {
-        private static readonly Regex _regexX = new(@"[X]{3}", RegexOptions.Compiled);
-        private static readonly Regex _regex0 = new(@"[0]{3}", RegexOptions.Compiled);
+        private readonly Regex _regexX;
+        private readonly Regex _regex0;
 
         private readonly StringBuilder _stringBuilder = new(15);
         private readonly Button[,] _buttons;
         private readonly int _maxIndex;
 
-        public TicTacToe(Button[,] buttons, int maxIndex)
+        public TicTacToe(Button[,] buttons, GameModeType gameModeType)
         {
             _buttons = buttons;
-            _maxIndex = maxIndex;
+            if (gameModeType == GameModeType.Classic)
+            {
+                _maxIndex = 3;
+                _regexX = new Regex(@"[X]{3}", RegexOptions.Compiled);
+                _regex0 = new Regex(@"[0]{3}", RegexOptions.Compiled);
+            }
+            else
+            {
+                _maxIndex = 15;
+                _regexX = new Regex(@"[X]{5}", RegexOptions.Compiled);
+                _regex0 = new Regex(@"[0]{5}", RegexOptions.Compiled);
+            }
         }
 
         private List<string> GetValueVertical()
