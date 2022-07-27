@@ -7,11 +7,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="883f515e-6d12-4e47-a8d5-55a68bfa5b3b" name="Changes" comment="main window changed to MVVM pattern;">
-      <change afterPath="$PROJECT_DIR$/WPF-Game-Tic-Tac-Toe/ModelViews/DescriptionWindowModelView.cs" afterDir="false" />
+    <list default="true" id="883f515e-6d12-4e47-a8d5-55a68bfa5b3b" name="Changes" comment="Description Window changed to MVVM pattern;">
+      <change afterPath="$PROJECT_DIR$/WPF-Game-Tic-Tac-Toe/ModelViews/TicTacToeClassicWindowModelView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WPF-Game-Tic-Tac-Toe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WPF-Game-Tic-Tac-Toe/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF-Game-Tic-Tac-Toe/Windows/DescriptionWindow.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/WPF-Game-Tic-Tac-Toe/Windows/DescriptionWindow.xaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WPF-Game-Tic-Tac-Toe/Windows/DescriptionWindow.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WPF-Game-Tic-Tac-Toe/Windows/DescriptionWindow.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF-Game-Tic-Tac-Toe/Models/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WPF-Game-Tic-Tac-Toe/Models/Game.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF-Game-Tic-Tac-Toe/Models/TicTacToe.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WPF-Game-Tic-Tac-Toe/Models/TicTacToe.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF-Game-Tic-Tac-Toe/Windows/TicTacToeBig.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/WPF-Game-Tic-Tac-Toe/Windows/TicTacToeBig.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF-Game-Tic-Tac-Toe/Windows/TicTacToeBig.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WPF-Game-Tic-Tac-Toe/Windows/TicTacToeBig.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF-Game-Tic-Tac-Toe/Windows/TicTakToeClassic.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/WPF-Game-Tic-Tac-Toe/Windows/TicTakToeClassic.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WPF-Game-Tic-Tac-Toe/Windows/TicTakToeClassic.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WPF-Game-Tic-Tac-Toe/Windows/TicTakToeClassic.xaml.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +37,9 @@
       </branch-storage>
     </favorite-branches>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock://F:/Project/My New Project 2022/WPF-Game-Tic-Tac-Toe/WPF-Game-Tic-Tac-Toe/Windows/DescriptionWindow.xaml" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -86,7 +93,7 @@
       <workItem from="1658655831189" duration="50000" />
       <workItem from="1658655954087" duration="5529000" />
       <workItem from="1658676082220" duration="98000" />
-      <workItem from="1658907463821" duration="10222000" />
+      <workItem from="1658907463821" duration="11089000" />
     </task>
     <task id="LOCAL-00001" summary="Init commit;">
       <created>1658655970454</created>
@@ -137,7 +144,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658945521217</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Description Window changed to MVVM pattern;">
+      <created>1658946290770</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1658946290770</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -166,6 +180,7 @@
     <MESSAGE value="add mode tic-tac-toe 15x15;" />
     <MESSAGE value="refactoring;" />
     <MESSAGE value="main window changed to MVVM pattern;" />
-    <option name="LAST_COMMIT_MESSAGE" value="main window changed to MVVM pattern;" />
+    <MESSAGE value="Description Window changed to MVVM pattern;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Description Window changed to MVVM pattern;" />
   </component>
 </project>

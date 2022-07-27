@@ -1,7 +1,7 @@
-﻿using System.Text.RegularExpressions;
+﻿/*using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using WPF_Game_Tic_Tac_Toe.Data;
+using WPF_Game_Tic_Tac_Toe.Models;
 using WPF_Game_Tic_Tac_Toe.Scripts;
 
 namespace WPF_Game_Tic_Tac_Toe.Windows;
@@ -150,4 +150,4 @@ public partial class TicTacToeBig : Window
                           $"\n{_firstNick} wins: {_gameInfo.FirstPlayerWins}" +
                           $"\n{_secondNick} wins: {_gameInfo.SecondPlayerWins}";
     }
-}
+}*/

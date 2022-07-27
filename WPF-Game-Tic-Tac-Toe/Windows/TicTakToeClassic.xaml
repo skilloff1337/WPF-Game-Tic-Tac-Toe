@@ -4,9 +4,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:WPF_Game_Tic_Tac_Toe.Windows"
+        xmlns:modelViews="clr-namespace:WPF_Game_Tic_Tac_Toe.ModelViews"
         mc:Ignorable="d"
         Title="TicTakToeClassic" Height="450" Width="800">
- <Window.Resources>
+    <Window.DataContext>
+        <modelViews:TicTacToeClassicWindowModelView />
+    </Window.DataContext>
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="100"></Setter>
+        </Style>
         <Style x:Key="Button" TargetType="Button">
             <Setter Property="Margin" Value="0 10 0 0"></Setter>
             <Setter Property="HorizontalAlignment" Value="Center"></Setter>
@@ -28,8 +35,14 @@
             <Setter Property="VerticalAlignment" Value="Top"></Setter>
             <Setter Property="Margin" Value="10"></Setter>
         </Style>
+        <Style TargetType="Label">
+            <Setter Property="Width" Value="100"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="Margin" Value="0 10 0 0"></Setter>
+        </Style>
     </Window.Resources>
-    <Grid Name="Grid">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="1*" />
@@ -43,14 +56,66 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Grid.Column="3" Grid.RowSpan="3">
-            <Button Style="{StaticResource Button}" Click="Button_OpenMainWindow">Back</Button>
-            <Button Style="{StaticResource Button}" Click="RestartGame">Restart</Button>
-            <TextBlock Style="{StaticResource Header}">Nicknames:</TextBlock>
-            <TextBlock x:Name="NicknamesPlayers" Margin="0"></TextBlock>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Label Content="NickName №1"></Label>
+                <Label Content="NickName №2"></Label>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBox x:Name="FirstNick" Width="100" Margin="5" Text="{Binding FirstNick , Mode=OneWay}" />
+                <TextBox x:Name="SecondNick" Width="100" Margin="5" Text="{Binding SecondNick, Mode=OneWay}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button FontSize ="16" Width="100" Content="Change Nick" Margin="5" Command="{Binding   SetFirstNickName}"
+                        CommandParameter="{Binding ElementName= FirstNick, Path=.Text}" />
+                <Button FontSize ="16" Width="100" Content="Change Nick" Margin="5" Command="{Binding   SetSecondNickName}"
+                        CommandParameter="{Binding ElementName= SecondNick, Path=Text}" />
+            </StackPanel>
+            <Button Style="{StaticResource Button}" Command="{Binding Back}">Back</Button>
+            <Button Style="{StaticResource Button}" Command="{Binding Restart}">Restart</Button>
             <TextBlock Style="{StaticResource Header}">Now walking:</TextBlock>
-            <TextBlock x:Name="NowWalking" Margin="0"></TextBlock>
+            <TextBlock Margin="0" Text="{Binding NowWalking}"></TextBlock>
             <TextBlock Style="{StaticResource Header}">Statistics:</TextBlock>
-            <TextBlock x:Name="Statistics" Margin="0"></TextBlock>
+            <TextBlock>
+                <Run Text="Games played: " />
+                <Run Text="{Binding   AllPlayedGames, Mode=OneWay}" />
+            </TextBlock>
+            <TextBlock>
+                <Run Text="{Binding FirstNick, Mode=OneWay}" />
+                <Run Text=" wins:" />
+                <Run Text="{Binding FirstPlayerWins, Mode=OneWay}"></Run>
+            </TextBlock>
+            <TextBlock>
+                <Run Text="{Binding SecondNick, Mode=OneWay}" />
+                <Run Text=" wins:" />
+                <Run Text="{Binding SecondPlayerWins, Mode=OneWay}"></Run>
+            </TextBlock>
         </StackPanel>
+        <Button x:Name="B00" Grid.Row="0" Grid.Column="0" Command="{Binding ClickOnCell}"
+            CommandParameter="{Binding ElementName = B00}">
+        </Button>
+        <Button x:Name="B01" Grid.Row="0" Grid.Column="1" Command="{Binding ClickOnCell}"
+            CommandParameter="{Binding ElementName = B01}">
+        </Button>
+        <Button x:Name="B02" Grid.Row="0" Grid.Column="2" Command="{Binding ClickOnCell}"
+            CommandParameter="{Binding ElementName = B02}">
+        </Button>
+        <Button x:Name="B10" Grid.Row="1" Grid.Column="0" Command="{Binding ClickOnCell}"
+            CommandParameter="{Binding ElementName = B10}">
+        </Button>
+        <Button x:Name="B11" Grid.Row="1" Grid.Column="1" Command="{Binding ClickOnCell}"
+            CommandParameter="{Binding ElementName = B11}">
+        </Button>
+        <Button x:Name="B12" Grid.Row="1" Grid.Column="2" Command="{Binding ClickOnCell}"
+            CommandParameter="{Binding ElementName = B12}">
+        </Button>
+        <Button x:Name="B20" Grid.Row="2" Grid.Column="0" Command="{Binding ClickOnCell}"
+            CommandParameter="{Binding ElementName = B20}">
+        </Button>
+        <Button x:Name="B21" Grid.Row="2" Grid.Column="1" Command="{Binding ClickOnCell}"
+            CommandParameter="{Binding ElementName = B21}">
+        </Button>
+        <Button x:Name="B22" Grid.Row="2" Grid.Column="2" Command="{Binding ClickOnCell}"
+                CommandParameter="{Binding ElementName = B22}">
+        </Button>
     </Grid>
 </Window>

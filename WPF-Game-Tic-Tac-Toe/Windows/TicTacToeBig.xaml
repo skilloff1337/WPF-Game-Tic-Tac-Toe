@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WPF_Game_Tic_Tac_Toe.Windows"
         mc:Ignorable="d"
         Title="TicTacToeBig" Height="550" Width="800">
-    <Window.Resources>
+    <!--<Window.Resources>
         <Style x:Key="Button" TargetType="Button">
             <Setter Property="Margin" Value="0 10 0 0"></Setter>
             <Setter Property="HorizontalAlignment" Value="Center"></Setter>
@@ -76,5 +76,5 @@
             <TextBlock Style="{StaticResource Header}">Statistics:</TextBlock>
             <TextBlock x:Name="Statistics" Margin="0"></TextBlock>
         </StackPanel>
-    </Grid>
+    </Grid>-->
 </Window>
