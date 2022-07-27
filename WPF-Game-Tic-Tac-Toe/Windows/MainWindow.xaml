@@ -3,11 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WPF_Game_Tic_Tac_Toe"
+        xmlns:modelView="clr-namespace:WPF_Game_Tic_Tac_Toe.ModelViews"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-  <Window.Resources>
-        <Style TargetType ="Button">
+    <Window.DataContext>
+        <modelView:MainWindowModelView />
+    </Window.DataContext>
+    <Window.Resources>
+        <Style TargetType="Button">
             <Setter Property="FontSize" Value="30"></Setter>
             <Setter Property="Width" Value="200"></Setter>
             <Setter Property="Height" Value="70"></Setter>
@@ -35,15 +38,13 @@
     </Window.Resources>
     <Grid>
         <StackPanel>
-            <Button FontSize="22" Click="Button_ShowChangeNick">Change NickName</Button>
-            <Button FontSize="27" Click="Button_OpenClassicTicTacToe">Tic Tak Toe (3x3)</Button>
-            <Button FontSize="22" Click="Button_OpenBigTicTacToe">Tic Tak Toe (15x15)</Button>
-            <Button Click="Button_ShowDescription">Description</Button>
+            <Button FontSize="27" Command="{Binding LoadClassicMode}">Tic Tak Toe (3x3)</Button>
+            <Button FontSize="22" Command="{Binding LoadBigMode}">Tic Tak Toe (15x15)</Button>
+            <Button Command="{Binding  LoadDescription}">Description</Button>
         </StackPanel>
         <StackPanel HorizontalAlignment="Center">
-            <TextBlock Style="{StaticResource Header}">WELCOME</TextBlock>
-            <TextBlock x:Name="TextFirstNick">Player №1(X)</TextBlock>
-            <TextBlock x:Name="TextSecondNick">Player №2(0)</TextBlock>
+            <TextBlock Style="{StaticResource Header}" Margin="0">WELCOME TO</TextBlock>
+            <TextBlock Style="{StaticResource Header}" HorizontalAlignment="Center" Background="Aqua">TIC-TAC-TOE</TextBlock>
         </StackPanel>
         <TextBlock Style="{StaticResource Footer}">Copyright © Skilloff 2022-2022. All rights reserved.</TextBlock>
     </Grid>

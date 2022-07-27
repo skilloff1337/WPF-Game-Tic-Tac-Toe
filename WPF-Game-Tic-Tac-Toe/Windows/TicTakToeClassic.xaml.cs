@@ -20,12 +20,12 @@ public partial class TicTakToeClassic : Window
     private const string SYMBOL_X = "X";
     private const string SYMBOL_O = "0";
 
-    public TicTakToeClassic(string firstNick, string secondNick)
+    public TicTakToeClassic()
     {
-        _firstNick = firstNick;
-        _secondNick = secondNick;
+        _firstNick = "firstNick";
+        _secondNick = "secondNick";
         InitializeComponent();
-        NicknamesPlayers.Text = $"{firstNick}(X)\n{secondNick}(0)";
+        NicknamesPlayers.Text = $"{"firstNick"}(X)\n{"secondNick"}(0)";
         UpdateTexts();
         CreateButtons();
     }
